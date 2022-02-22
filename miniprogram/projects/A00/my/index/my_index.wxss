@@ -1,0 +1,24 @@
+@import "../../skin/skin.wxss";
+@import "../../../../style/project/my_index_base.wxss";
+
+ 
+
+.main .upside,
+.main .upside>image {
+	height: 380rpx;
+	border-bottom-left-radius: 30rpx;
+	border-bottom-right-radius: 30rpx;
+}
+
+.main .upside {
+	padding-top: 100rpx;
+}
+
+/*投影*/
+.main .upside-shadow {
+	box-shadow: 0 0 20rpx #999;
+}
+
+.main .upside .user-bar .detail .desc { 
+    color: #fff;
+}
