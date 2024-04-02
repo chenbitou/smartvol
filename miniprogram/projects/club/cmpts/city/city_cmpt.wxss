@@ -1,0 +1,191 @@
+Page {
+	background-color: #f5f3f0;
+}
+
+.main-city {
+	width: 100%;
+
+
+}
+
+.main-city .city-modal {
+	width: 100%;
+	z-index: 999999999;
+	background-color: #fff;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.city-tag {
+	width: 100%;
+	font-size: 28rpx;
+	text-align: left; 
+}
+
+.bottom-border {
+	border-bottom: 1rpx solid #e3e3e3;
+}
+
+.header-box {
+	position: fixed;
+	top: 0rpx;
+	left: 0;
+	right: 0;
+	height: 100rpx;
+	z-index: 199;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #f5f3f0;
+}
+
+.search-box {
+	display: flex;
+	align-items: center;
+	height: 65rpx;
+	background-color: #ffffff;
+	border-radius: 6rpx;
+	width: 540rpx;
+}
+
+.search-icon {
+	width: 36rpx;
+	height: 36rpx;
+	margin: 0 16rpx;
+}
+
+.search-input {
+	width: 450rpx;
+	margin-left: 10rpx;
+	font-size: 29.16rpx;
+}
+
+.confirm {
+	width: 120rpx;
+	height: 65rpx;
+	margin-left: 30rpx;
+	text-align: center;
+	line-height: 65rpx;
+	font-size: 28rpx;
+	background-color: #d9d9d9;
+	color: #ffffff;
+	border-radius: 8rpx;
+}
+
+.confirm-active {
+	background-color: #3dcc6d;
+}
+
+.select-word {
+	position: fixed;
+	z-index: 99;
+	width: 50rpx;
+	height: 100vh;
+	overflow-y: auto;
+	right: 0;
+	top: 150rpx;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: #03a9f4;
+	background-color: #ffffff;
+	font-size: 20rpx;
+}
+
+.word-item {
+	width: 50rpx;
+	height: 3.5vh;
+	text-align: center;
+}
+
+.word-item:first-child {
+	margin-top: 130rpx;
+}
+
+.city-scroll {
+	margin-top: 110rpx;
+}
+
+.tag {
+	height: 80rpx;
+	line-height: 80rpx;
+	font-size: 28rpx;
+	color: #666666;
+	padding: 0 30rpx;
+}
+
+.citys-box {
+	padding: 0 30rpx;
+	background-color: #ffffff;
+	font-size: 30rpx;
+	color: #666666;
+}
+
+.citys-item {
+	height: 80rpx;
+	line-height: 80rpx;
+}
+
+.citys-item:last-child {
+	border-bottom: none;
+}
+
+.hot-citys-box {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	padding: 10rpx 20rpx;
+	background-color: #ffffff;
+	font-size: 30rpx;
+	color: #666666;
+}
+
+.hot-citys-item {
+	width: 146rpx;
+	height: 60rpx;
+	margin: 10rpx;
+	text-align: center;
+	line-height: 60rpx;
+	border-radius: 10rpx;
+	border: 3rpx solid #e3e3e3;
+}
+
+.city-active {
+	color: #03a9f4;
+	border-color: #03a9f4;
+}
+
+.item-box:last-child {
+	margin-bottom: 30rpx;
+}
+
+.remind-word {
+	width: 200rpx;
+	height: 200rpx;
+	line-height: 200rpx;
+	text-align: center;
+	border-radius: 18rpx;
+	position: absolute;
+	top: 25vh;
+	left: 276rpx;
+	z-index: 199;
+	font-size: 3.5rem;
+	font-weight: bold;
+	color: #ffffff;
+	background-color: #000000;
+	opacity: 0.5;
+	animation: remind-word 200ms linear 1;
+}
+
+@keyframes remind-word {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 0.5;
+	}
+}

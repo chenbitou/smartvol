@@ -1,0 +1,6 @@
+<include src="../index/activity_index.wxml" />
+
+<block wx:if="{{skin.IS_SUB}}">
+	<import src="../../tpls/menu_tpl.wxml" />
+	<template is="menuTpl" data="{{skin,curMenu:'activity_online',returnHome}}" />
+</block>

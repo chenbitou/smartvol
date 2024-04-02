@@ -1,0 +1,10 @@
+@import "../../../style/skin.wxss"; 
+@import "../../admin/activity/join_list/admin_activity_join_list.wxss";
+
+.text-admin, .tabs .cur {
+    color: var(--projectColor) !important;
+}
+
+.tabs .tab-menu.cur:after {
+    background-color: var(--projectColor) !important;
+}

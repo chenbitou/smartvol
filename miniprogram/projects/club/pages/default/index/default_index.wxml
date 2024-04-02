@@ -1,0 +1,91 @@
+<view class="main">
+	<view class="up">
+		<image mode="widthFix" src="../../../images/home.jpg" />
+		<view wx:if="{{!vouchList}}" class="margin-top load loading text-l load-project"></view>
+		<swiper class="swiper" indicator-active-color="#FED202" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}" previous-margin="80rpx" next-margin="80rpx" circular="true" bindchange="swiperChange">
+			<swiper-item wx:for="{{vouchList}}" wx:key="key">
+				<image bindtap="url" bindtap="url" data-url="../../activity/detail/activity_detail?id={{item._id}}" lazy-load="{{true}}" src='{{item.ACTIVITY_OBJ.swiper[0]||item.ACTIVITY_OBJ.cover[0]}}' mode="aspectFill" class="swiper-image {{swiper == index ? 'active' : 'quiet'}} loading" />
+			</swiper-item>
+		</swiper>
+	</view>
+	<view class="menu">
+		<view class="inner ">
+			<view bindtap="url" data-url="../../news/index/news_index" class="item">
+				<view class="item-inner">
+					<view class="img  shadow-project">
+						<image src="../../../images/menu/1.png" />
+					</view>
+					<view class="title">通知公告</view>
+				</view>
+			</view>
+			<view bindtap="url" data-url="../../activity/calendar/activity_calendar" class="item">
+				<view class="item-inner">
+					<view class="img  shadow-project">
+						<image src="../../../images/menu/3.png" />
+					</view>
+					<view class="title">活动日历</view>
+				</view>
+			</view>
+			<view bindtap="url" data-type="relaunch" data-url="../../activity/index/activity_index" class="item">
+				<view class="item-inner">
+					<view class="img  shadow-project">
+						<image src="../../../images/menu/4.png" />
+					</view>
+					<view class="title">线下活动</view>
+				</view>
+			</view>
+			<view bindtap="url" data-type="relaunch" data-url="../../activity/online/activity_online" class="item">
+				<view class="item-inner">
+					<view class="img  shadow-project">
+						<image src="../../../images/menu/2.png" />
+					</view>
+					<view class="title">线上活动</view>
+				</view>
+			</view>
+		</view>
+		<view class="line1"></view>
+	</view>
+
+	<view class="down">
+
+		<view class="tab-line1">
+			<view bindtap="bindCurTap" data-cur="new" class="item {{cur=='new'?'cur':''}}">最新活动</view>
+			<view bindtap="bindCurTap" data-cur="hot" class="item {{cur=='hot'?'cur':''}}">最热活动</view>
+		</view>
+
+		<!-- List Begin -->
+		<view wx:if="{{!newList||!hotList}}" class="margin-top load loading text-l load-project"></view>
+
+		<view class="list" wx:if="{{cur=='new'}}">
+			<view wx:for="{{newList}}" wx:key="key" class="item shadow-project" bindtap="url" data-url="../../activity/detail/activity_detail?id={{item._id}}">
+
+				<image class="cover loading shadow-project" mode="aspectFill" lazy-load="{{true}}" src="{{item.ACTIVITY_OBJ.cover[0]}}" />
+				<view class="bottom">
+					<view class="title content-cut-one">{{item.ACTIVITY_TITLE}}</view>
+					<view class="desc content-cut-one">{{item.time}}</view>
+				</view>
+
+			</view>
+		</view>
+
+		<view class="list" wx:if="{{cur=='hot'}}">
+
+			<view wx:for="{{hotList}}" wx:key="key" class="item shadow-project" bindtap="url" data-url="../../activity/detail/activity_detail?id={{item._id}}">
+
+				<image class="cover loading shadow-project" mode="aspectFill" lazy-load="{{true}}" src="{{item.ACTIVITY_OBJ.cover[0]}}" />
+				<view class="bottom">
+					<view class="title content-cut-one">{{item.ACTIVITY_TITLE}}</view>
+					<view class="desc content-cut-one">{{item.time}}</view>
+				</view>
+
+			</view>
+		</view>
+		<!-- List END -->
+	</view>
+	<view style="height: 200rpx;"></view>
+</view>
+
+<block wx:if="{{skin.IS_SUB}}">
+	<import src="../../tpls/menu_tpl.wxml" />
+	<template is="menuTpl" data="{{curMenu:'home_index',returnHome:false}}" />
+</block>

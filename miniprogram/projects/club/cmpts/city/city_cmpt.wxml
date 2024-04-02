@@ -1,0 +1,87 @@
+<wxs module="tools">
+	function indexOf(data, key) {
+		return data.indexOf(key);
+	}
+
+	function includes(data, key) {
+		return data.indexOf(key) > -1 ? true : false;
+	}
+
+	function split(str, chr) {
+		var arr = str.split(chr);
+		if (arr.length == 0) return [];
+
+		return arr;
+	}
+
+	module.exports = {
+		split: split,
+		indexOf: indexOf,
+		includes: includes
+	};
+	module.exports.msg = "hello tools";
+</wxs>
+<view class="main-city">
+	<view bindtap="bindShowTap" class="city-tag"><text class="icon-location"></text>{{nowCity}}</view>
+
+	<view wx:if="{{showCityList}}" class="city-modal">
+		<view class="header-box bottom-border" style="top:{{customBarHeight}}px;">
+			<view class="search-box">
+				<image class="search-icon" src="/cmpts/public/city/images/search_icon.png" />
+				<input class="search-input" type="text" placeholder="请输入城市名" placeholder-class="input-placeholder" bindinput="search" />
+			</view>
+			<view class="confirm confirm-active bg-project" catch:tap="confirm">关闭</view>
+		</view>
+		<view class="select-word">
+			<!--<view class="word-item" data-scroll-word="location" catch:tap="setWord">当前</view>-->
+			<view class="word-item" data-scroll-word="hot" catch:tap="setWord">热门</view>
+			<view class="word-item" wx:for="{{citys}}" wx:key="index" data-scroll-word="{{item[0]}}" catch:tap="setWord">
+				{{item[0]}}
+			</view>
+		</view>
+		<scroll-view id="scroll-view" scroll-y="{{true}}" class="city-scroll" scroll-into-view="{{scrollWord}}" scroll-with-animation="{{scrollWithAnimation}}" style="height:{{scrollHeight}}px;margin-top:{{customBarHeight+60}}px;">
+
+			<view hidden="{{searchRes.length>0}}">
+				<!--
+				<view id="location" class="tag">当前</view>
+				<view class="citys-box">
+					<view class="citys-item {{currentActive==='location'&&choosedCitys.code===locationCity.code && 'city-active'}}" data-current-active="location" data-choosed-citys="{{locationCity}}" catch:tap="setCity">
+						{{locationCity.name}}
+					</view>
+				</view>-->
+				<block wx:if="{{haveHistory&&historyCitys.length>0}}">
+					<view id="history" class="tag">历史选择</view>
+					<view class="hot-citys-box">
+						<view wx:for="{{historyCitys}}" wx:key="code" class="hot-citys-item" data-current-active="history" data-choosed-citys="{{item}}" catch:tap="setCity">
+							{{item.name}}
+						</view>
+					</view>
+				</block>
+				<view id="hot" class="tag">热门城市</view>
+				<view class="hot-citys-box">
+					<view wx:for="{{hotCitys}}" wx:key="code" class="hot-citys-item {{tools.includes(nowCity,item.name)&&'city-active'}}" data-current-active="hot" data-choosed-citys="{{item}}" catch:tap="setCity">
+						{{item.name}}
+					</view>
+				</view>
+				<view class="item-box" wx:for="{{citys}}" wx:key="index">
+					<view id="{{item[0]}}" class="tag">{{item[0]}}</view>
+					<view class="citys-box">
+						<view wx:for="{{item[1]}}" wx:key="code" wx:for-item="city" class="citys-item bottom-border {{tools.includes(nowCity,city.name)&&'city-active'}}" data-current-active="list" data-choosed-citys="{{city}}" catch:tap="setCity">
+							{{city.name}}
+						</view>
+					</view>
+				</view>
+			</view>
+			<view hidden="{{searchRes.length===0}}">
+				<view id="location" class="tag">搜索结果</view>
+				<view class="citys-box">
+					<view wx:for="{{searchRes}}" wx:key="code" class="citys-item bottom-border {{tools.includes(nowCity,item.name) && 'city-active'}}" data-current-active="search" data-choosed-citys="{{item}}" catch:tap="setCity">
+						{{item.name}}
+					</view>
+				</view>
+			</view>
+		</scroll-view>
+		<view hidden="{{remindHide}}" class="remind-word">{{remindWord}}</view>
+	</view>
+
+</view>

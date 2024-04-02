@@ -1,0 +1,7 @@
+{
+	"usingComponents": {  
+		"cmpt-city": "../../../cmpts/city/city_cmpt"
+	}, 
+	"disableScroll": true, 
+	"navigationBarTitleText": "线下活动"
+}
